@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100&family=Poppins:wght@100&display=swap');
+
+.navbarContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    background-color: #FFFEFE;
+    padding: 0px 20px;
+    color: black;
+    font-family: 'Poppins', sans-serif;
+    padding-top: 10px;
+}
+
+.navbarBrand{
+    display:  flex;
+    flex: 2;
+    align-items: center;
+    justify-items: flex-start;
+}
+
+.navbarBrandImage{
+    width: 100px;
+    height: 100px;
+}
+
+.navbarBrandText{
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.navbarSearchBox{
+    display: flex;
+    justify-items: flex-start;
+    flex: 5;
+    align-items: center;
+    padding-left: 20px;
+    border-radius: 20px;
+    background-color: rgb(244, 244, 244);
+}
+
+.navbarSearchBoxInput{
+    width:90%;
+    height: 40px;
+    border:none;
+    background-color: transparent;
+}
+
+.navbarSearchBoxInput:focus{
+    border: none;
+    outline: none;
+}
+
+.navbarMenu{
+    display: flex;
+    flex: 4;
+    align-items: center;
+    justify-items: flex-end;
+    margin-top: 10px;
+    list-style: none;
+}
