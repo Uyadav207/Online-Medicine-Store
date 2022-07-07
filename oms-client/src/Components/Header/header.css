@@ -58,6 +58,11 @@
     outline: none;
 }
 
+.navbarSearchBoxIcon{
+    color: black;
+    font-size: 1.2rem;
+}
+
 .navbarMenu{
     display:flex;
     flex: 4;
@@ -81,4 +86,19 @@
 }
 .navbarMenuItem:hover{
     background-color: rgb(244, 244, 244);
+}
+
+.navbarCart{
+    display:flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+
+.navbarCartCount{
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: black;
 }
