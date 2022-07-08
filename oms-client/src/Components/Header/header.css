@@ -10,7 +10,8 @@
     padding: 0px 60px;
     color: black;
     font-family: 'Poppins', sans-serif;
-    height: 80px;
+    height: 70px;
+    border-bottom: 1px solid #e5e8e8;
 }
 
 .navbarBrand{
@@ -21,26 +22,26 @@
 }
 
 .navbarBrandImage{
-    width: 100px;
-    height: 100px;
+    width: 50px;
+    height: 50px;
 }
 
 .navbarBrandText{
-    font-size: 2rem;
-    font-weight: bold;
-    font-family: 'Josefin Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: bolder;
+    font-size: larger;
+    margin-left: -5px;
 }
 
 .navbarSearchBox{
     display: flex;
-    justify-items: flex-start;
-    flex: 5;
     align-items: center;
+    flex: 5;
+    justify-items: flex-start;
     padding-left: 20px;
     border-radius: 20px;
-    background-color: rgb(244, 244, 244);
+    background-color: #EEEEEE;
     margin-left:30px;
-    margin-top: 10px;
 }
 
 .navbarSearchBoxInput{
