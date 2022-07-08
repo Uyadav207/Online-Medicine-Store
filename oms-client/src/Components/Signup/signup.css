@@ -2,12 +2,13 @@
   width: 100vw;
   /* height: 100vh; */
   height: 100%;
-  backdrop-filter: blur(100px);
+  backdrop-filter: blur(5px);
   position: absolute;
   top: 0vh;
-  background-color: rgba(0, 0, 0, 0.282);
+  background-color: rgba(0, 0, 0, 0.375);
   left: 0vw;
   padding-top: 40px;
+  z-index: 100;
 }
 
 .signupContainer {
