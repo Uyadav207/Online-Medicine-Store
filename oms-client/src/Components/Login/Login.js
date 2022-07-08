@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import Image from "../../Assests/login-Image.webp";
 import Close from "@mui/icons-material/Close";
-import { ShowLogin } from "../../App";
+import { ShowLogin, ShowSignup } from "../../App";
 import "./login.css";
 function Login() {
   const [formInfo, setFormInfo] = useState({
@@ -11,6 +11,7 @@ function Login() {
   });
 
   const [loginShow, setLoginShow] = useContext(ShowLogin);
+  const [showSignup, setShowSignup] = useContext(ShowSignup);
 
   const handleChange = (e) => {
     setFormInfo({
@@ -74,7 +75,19 @@ function Login() {
           <button className="loginFormButton">Sign in</button>
           <div className="loginFormText">
             Don't have and account? &nbsp;
-            <span style={{color:"#017aff",textDecoration:"underline"}}>Sign Up</span>
+            <span
+              style={{
+                color: "#017aff",
+                textDecoration: "underline",
+                cursor: "pointer",
+              }}
+              onClick={() => {
+                setShowSignup(true);
+                setLoginShow(false);
+              }}
+            >
+              Sign Up
+            </span>
           </div>
         </div>
       </div>

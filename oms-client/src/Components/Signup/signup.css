@@ -1,0 +1,107 @@
+.signupBackground {
+  width: 100vw;
+  /* height: 100vh; */
+  height: 100%;
+  backdrop-filter: blur(10px);
+  position: absolute;
+  top: 0vh;
+  background-color: rgba(0, 0, 0, 0.282);
+  left: 0vw;
+  padding-top: 40px;
+}
+
+.signupContainer {
+    background-color: rgb(245, 241, 241);
+    width: 55vw;
+    height: 75vh;
+    margin: auto;
+    display: flex;
+    border-radius: 7px 7px 7px 7px;
+    -webkit-box-shadow: 12px 13px 25px -12px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 12px 13px 25px -12px rgba(0, 0, 0, 0.75);
+    box-shadow: 12px 13px 25px -12px rgba(0, 0, 0, 0.75);
+    position: relative;
+  }
+
+  .signupImage {
+    width: 50%;
+    height: 100%;
+    border-radius: 7px 0px 0px 7px;
+  }
+
+  .signupForm {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content:left;
+    align-items:flex-start;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 90px;
+  }
+  .signupFormTitle {
+    position: absolute;
+    top: 30px;
+    left: 57%;
+    font-weight: 500;
+    font-size: 1.75rem !important;
+  }
+
+  .signupFormInput {
+    width: 100%;
+    height: 35px;
+    border-radius: 5px;
+    border: 1px solid rgb(200, 200, 200);
+    padding: 0px 10px;
+    margin-bottom: 10px;
+    font-size: 1.05rem;
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+  }
+
+  .signupFormDropDown{
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid rgb(200, 200, 200);
+    padding: 0px 10px;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+  }
+
+  .signupFormDropDown:focus{
+    border: 3px solid rgba(52, 118, 210, 0.599);
+    outline: none;
+  }
+  .signupFormShowPassword {
+    cursor: pointer;
+    font-size: 1.2rem;
+    align-self: bottom;
+  }
+  .signupFormInput:focus {
+    border: 3px solid rgba(52, 118, 210, 0.599);
+    outline: none;
+  }
+  .signupFormButton{
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid rgb(200, 200, 200);
+    padding: 0px 10px;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    color: white;
+    background-color: #017aff;
+    font-weight: bold;
+  }
+
+  .signupCloseButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 1.5rem !important;
+  }

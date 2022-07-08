@@ -9,23 +9,26 @@ import Orders from "./Pages/Orders/Orders";
 import { createContext, useState } from "react";
 
 export const ShowLogin = createContext(false);
+export const ShowSignup = createContext(false);
 
 function App() {
   const [loginShow, setLoginShow] = useState(false);
-
+  const [showSignup, setShowSignup] = useState(false);
   return (
     <div>
-      <ShowLogin.Provider value={[loginShow,setLoginShow]}>
-        <Router>
-          <Header></Header>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/products/*" element={<Products />} />
-            <Route path="/checkout" element={<Checkout />} />
-            <Route path="/orders" element={<Orders />} />
-          </Routes>
-        </Router>
-        <Footer></Footer>
+      <ShowLogin.Provider value={[loginShow, setLoginShow]}>
+        <ShowSignup.Provider value={[showSignup, setShowSignup]}>
+          <Router>
+            <Header></Header>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/products/*" element={<Products />} />
+              <Route path="/checkout" element={<Checkout />} />
+              <Route path="/orders" element={<Orders />} />
+            </Routes>
+          </Router>
+          <Footer></Footer>
+        </ShowSignup.Provider>
       </ShowLogin.Provider>
     </div>
   );
