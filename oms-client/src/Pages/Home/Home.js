@@ -10,9 +10,9 @@ function Home() {
   return (
     <div className="homeContainer">
       Home
+      <ProductCard></ProductCard>      
       {loginShow && <Login></Login>}
       {showSignup && <Signup></Signup>}
-      <ProductCard></ProductCard>      
     </div>
   );
 }
