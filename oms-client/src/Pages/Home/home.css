@@ -1,0 +1,6 @@
+.homeContainer{
+    background-color: rgb(237, 237, 237);
+    position: relative;
+    height: max-content;
+    min-height: 100vh;
+}
