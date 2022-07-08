@@ -67,7 +67,7 @@ function Signup() {
             value={formInfo.confirmPassword}
             onChange={handleChange}
           />
-          <div>
+          <div className="show_password">
             <input
               type="checkbox"
               name="showPassword"

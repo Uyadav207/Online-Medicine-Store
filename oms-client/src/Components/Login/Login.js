@@ -35,9 +35,10 @@ function Login() {
           <p
             style={{
               color: "grey",
-              fontSize: ".8rem",
+              fontSize: "0.8rem",
               marginBottom: "30px",
               marginTop: "10px",
+              fontWeight: "500"
             }}
           >
             Get access to your orders, prescriptions and other benefits

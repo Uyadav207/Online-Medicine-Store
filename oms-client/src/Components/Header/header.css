@@ -42,9 +42,9 @@
   border-radius: 20px;
   background-color: white;
   margin-left: 30px;
-  -webkit-box-shadow: 9px 10px 5px -9px rgba(0, 0, 0, 0.75);
+  /* -webkit-box-shadow: 9px 10px 5px -9px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 9px 10px 5px -9px rgba(0, 0, 0, 0.75);
-  box-shadow: 9px 10px 5px -9px rgba(0, 0, 0, 0.75);
+  box-shadow: 9px 10px 5px -9px rgba(0, 0, 0, 0.75); */
 }
 
 .navbarSearchBoxInput {
@@ -89,9 +89,9 @@
 }
 .navbarMenuItem:hover {
   background-color: rgb(251, 251, 251);
-  -webkit-box-shadow: 12px 13px 5px -12px rgba(0,0,0,0.75);
+  /* -webkit-box-shadow: 12px 13px 5px -12px rgba(0,0,0,0.75);
   -moz-box-shadow: 12px 13px 5px -12px rgba(0,0,0,0.75);
-  box-shadow: 12px 13px 5px -12px rgba(0,0,0,0.75);
+  box-shadow: 12px 13px 5px -12px rgba(0,0,0,0.75); */
 }
 
 .navbarCart {

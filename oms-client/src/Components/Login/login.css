@@ -2,7 +2,7 @@
   width: 100vw;
   /* height: 100vh; */
   height: 100%;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(100px);
   position: absolute;
   top: 0vh;
   background-color: rgba(0, 0, 0, 0.282);
@@ -15,12 +15,14 @@
   height: 60vh;
   margin: auto;
   display: flex;
-  border-radius: 7px 7px 7px 7px;
-  -webkit-box-shadow: 12px 13px 25px -12px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 12px 13px 25px -12px rgba(0, 0, 0, 0.75);
-  box-shadow: 12px 13px 25px -12px rgba(0, 0, 0, 0.75);
+  justify-content: center;
+  border-radius: 7px;
+  -webkit-box-shadow: 12px 13px 25px -12px rgba(48, 48, 48, 0.75);
+  -moz-box-shadow: 12px 13px 25px -12px rgba(109, 108, 108, 0.75);
+  box-shadow: 12px 13px 25px -12px rgba(115, 112, 112, 0.75);
   position: relative;
 }
+
 
 .loginCloseButton {
   position: absolute;
@@ -50,18 +52,18 @@
 .loginFormTitle {
   position: absolute;
   top: 30px;
-  left: 57%;
-  font-weight: 500;
-  font-size: 1.75rem !important;
+  left: 56%;
+  font-weight: bolder;
+  font-size: 2rem !important;
 }
 .loginFormInput {
   width: 100%;
   height: 40px;
   border-radius: 5px;
-  border: 1px solid rgb(200, 200, 200);
+  border: 1px solid rgb(236, 236, 236);
   padding: 0px 10px;
   margin-bottom: 10px;
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: rgb(0, 0, 0);
   background-color: rgb(255, 255, 255);
 }
@@ -73,8 +75,11 @@
 
 .loginFormShowPassword {
   cursor: pointer;
-  font-size: 1.2rem;
+  font-size: 0.9rem;
   align-self: bottom;
+  margin-left: 5px;
+  font-weight: bold;
+  padding-bottom: 4px;
 }
 
 .loginFormButton {

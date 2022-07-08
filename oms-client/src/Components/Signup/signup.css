@@ -2,7 +2,7 @@
   width: 100vw;
   /* height: 100vh; */
   height: 100%;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(100px);
   position: absolute;
   top: 0vh;
   background-color: rgba(0, 0, 0, 0.282);
@@ -16,10 +16,10 @@
     height: 75vh;
     margin: auto;
     display: flex;
-    border-radius: 7px 7px 7px 7px;
-    -webkit-box-shadow: 12px 13px 25px -12px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 12px 13px 25px -12px rgba(0, 0, 0, 0.75);
-    box-shadow: 12px 13px 25px -12px rgba(0, 0, 0, 0.75);
+    border-radius: 7px;
+    -webkit-box-shadow: 12px 13px 25px -12px rgba(48, 48, 48, 0.75);
+    -moz-box-shadow: 12px 13px 25px -12px rgba(109, 108, 108, 0.75);
+    box-shadow: 12px 13px 25px -12px rgba(115, 112, 112, 0.75);
     position: relative;
   }
 
@@ -43,32 +43,32 @@
   .signupFormTitle {
     position: absolute;
     top: 30px;
-    left: 57%;
-    font-weight: 500;
-    font-size: 1.75rem !important;
+    left: 55%;
+    font-weight: bolder;
+    font-size: 2rem !important;
   }
 
   .signupFormInput {
     width: 100%;
-    height: 35px;
+    height: 40px;
     border-radius: 5px;
-    border: 1px solid rgb(200, 200, 200);
+    border: 1px solid rgb(236, 236, 236);
     padding: 0px 10px;
     margin-bottom: 10px;
-    font-size: 1.05rem;
+    font-size: 1rem;
     color: rgb(0, 0, 0);
     background-color: rgb(255, 255, 255);
   }
 
   .signupFormDropDown{
-    width: 100%;
+    width: 30%;
     height: 40px;
     border-radius: 5px;
     border: 1px solid rgb(200, 200, 200);
     padding: 0px 10px;
     margin-bottom: 10px;
-    font-size: 1.2rem;
-    color: rgb(0, 0, 0);
+    font-size: 1rem;
+    color: rgb(111, 111, 111);
     background-color: rgb(255, 255, 255);
   }
 
@@ -76,10 +76,22 @@
     border: 3px solid rgba(52, 118, 210, 0.599);
     outline: none;
   }
+
+  .show_password {
+    padding-left: 20px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  }
+
+  .show_password > #showPassword {
+    size: small;
+  }
+
   .signupFormShowPassword {
     cursor: pointer;
-    font-size: 1.2rem;
+    font-size: 0.8rem;
     align-self: bottom;
+    margin-left: 10px;
   }
   .signupFormInput:focus {
     border: 3px solid rgba(52, 118, 210, 0.599);
