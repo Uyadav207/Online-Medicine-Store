@@ -1,106 +1,109 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100&family=Poppins:wght@100&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100&family=Poppins:wght@100&display=swap");
 
-.navbarContainer{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #FFFEFE;
-    padding: 0px 60px;
-    color: black;
-    font-family: 'Poppins', sans-serif;
-    height: 70px;
-    border-bottom: 1px solid #e5e8e8;
+.navbarContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(243, 240, 240);
+  padding: 0px 90px;
+  color: black;
+  font-family: "Poppins", sans-serif;
+  height: 70px;
+  border-bottom: 1px solid #e5e8e8;
 }
 
-.navbarBrand{
-    display:  flex;
-    flex: 2;
-    align-items: center;
-    justify-items: flex-start;  
+.navbarBrand {
+  display: flex;
+  flex: 2;
+  align-items: center;
+  justify-items: flex-start;
 }
 
-.navbarBrandImage{
-    width: 50px;
-    height: 50px;
+.navbarBrandImage {
+  width: 50px;
+  height: 50px;
 }
 
-.navbarBrandText{
-    font-size: 1rem;
-    font-weight: bolder;
-    font-size: larger;
-    margin-left: -5px;
+.navbarBrandText {
+  font-size: 1rem;
+  font-weight: bolder;
+  font-size: larger;
+  margin-left: -5px;
 }
 
-.navbarSearchBox{
-    display: flex;
-    align-items: center;
-    flex: 5;
-    justify-items: flex-start;
-    padding-left: 20px;
-    border-radius: 20px;
-    background-color: #EEEEEE;
-    margin-left:30px;
+.navbarSearchBox {
+  display: flex;
+  align-items: center;
+  flex: 4;
+  justify-items: flex-start;
+  padding-left: 20px;
+  border-radius: 20px;
+  background-color: white;
+  margin-left: 30px;
+  -webkit-box-shadow: 9px 10px 5px -9px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 9px 10px 5px -9px rgba(0, 0, 0, 0.75);
+  box-shadow: 9px 10px 5px -9px rgba(0, 0, 0, 0.75);
 }
 
-.navbarSearchBoxInput{
-    width:90%;
-    height: 40px;
-    border:none;
-    background-color: transparent;
-    color: black;
-    font-weight: bold;
-
+.navbarSearchBoxInput {
+  width: 90%;
+  height: 40px;
+  border: none;
+  background-color: transparent;
+  color: black;
+  font-weight: bold;
 }
 
-.navbarSearchBoxInput:focus{
-    border: none;
-    outline: none;
+.navbarSearchBoxInput:focus {
+  border: none;
+  outline: none;
 }
 
-.navbarSearchBoxIcon{
-    color: black;
-    font-size: 1.2rem;
-    cursor: pointer;
+.navbarSearchBoxIcon {
+  color: black;
+  font-size: 1.2rem;
+  cursor: pointer;
 }
 
-.navbarMenu{
-    display:flex;
-    flex: 4;
-    align-content: center;
-    list-style: none;
-    margin-left: 10px;
-    font-weight: bold;
-    justify-content:space-evenly;
-    height: 100%;
+.navbarMenu {
+  display: flex;
+  flex: 5;
+  align-content: center;
+  list-style: none;
+  margin-left: 10px;
+  font-weight: bold;
+  justify-content: space-evenly;
+  height: 100%;
 }
 
-.navbarMenuItem{
-    font-size: 1.5rem;
-    cursor: pointer;
-    display: flex;
-    height: 100%;
-    align-items: center;
-    padding-left:10px ;
-    padding-right: 10px;
-    
+.navbarMenuItem {
+  font-size: 1.05rem;
+  cursor: pointer;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
 }
-.navbarMenuItem:hover{
-    background-color: rgb(244, 244, 244);
-}
-
-.navbarCart{
-    display:flex;
-    flex-direction: column;
-    justify-items: center;
-    align-items: center;
-    cursor: pointer;
+.navbarMenuItem:hover {
+  background-color: rgb(251, 251, 251);
+  -webkit-box-shadow: 12px 13px 5px -12px rgba(0,0,0,0.75);
+  -moz-box-shadow: 12px 13px 5px -12px rgba(0,0,0,0.75);
+  box-shadow: 12px 13px 5px -12px rgba(0,0,0,0.75);
 }
 
+.navbarCart {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  cursor: pointer;
+}
 
-.navbarCartCount{
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: black;
+.navbarCartCount {
+  font-size: 1rem;
+  font-weight: bold;
+  color: black;
 }
