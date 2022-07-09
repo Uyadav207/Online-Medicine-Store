@@ -71,12 +71,12 @@
   list-style: none;
   margin-left: 10px;
   font-weight: bold;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   height: 100%;
 }
 
 .navbarMenuItem {
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   cursor: pointer;
   display: flex;
   height: 100%;

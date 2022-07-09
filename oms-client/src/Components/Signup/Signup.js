@@ -1,14 +1,15 @@
-import React, { useState,useContext } from "react";
+import React, { useState, useContext } from "react";
 import "./signup.css";
 import Image from "../../Assests/signup-image.webp";
 import Close from "@mui/icons-material/Close";
-import {ShowSignup} from "../../App"
+import { ShowSignup } from "../../App";
+import { BASE_URL } from "../../Config/BaseUrl";
+import {useNavigate} from "react-router-dom";
 
 function Signup() {
-    const [showSignup, setShowSignup] = useContext(ShowSignup);
-
+  const [showSignup, setShowSignup] = useContext(ShowSignup);
   const [formInfo, setFormInfo] = useState({
-    fullName: "",
+    name: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -23,12 +24,42 @@ function Signup() {
     setFormInfo({ ...formInfo, [name]: value });
   };
 
+  const handleSubmit = async (e) => {
+    if (
+      !formInfo.name ||
+      !formInfo.address ||
+      !formInfo.age ||
+      !formInfo.email ||
+      !formInfo.password ||
+      !formInfo.confirmPassword
+    ) {
+      alert("Please fill all the fields");
+      return;
+    }
+    if (formInfo.password !== formInfo.confirmPassword) {
+      alert("Passwords do not match");
+      return;
+    }
+
+    const temp = await fetch(`${BASE_URL}/signup/user`, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(formInfo),
+    });
+    const response = await temp.json();
+    console.log(response)
+    if (temp.status === 200) {
+      alert("Signup successful");
+      setShowSignup(false);
+    }
+  };
+
   return (
     <div className="signupBackground">
       <div className="signupContainer">
         <img src={Image} alt="" className="signupImage" />
         <div className="signupForm">
-        <Close
+          <Close
             className="signupCloseButton"
             onClick={() => {
               setShowSignup(false);
@@ -38,9 +69,9 @@ function Signup() {
           <input
             type="text"
             className="signupFormInput"
-            name="fullName"
+            name="name"
             placeholder="Full Name"
-            value={formInfo.fullName}
+            value={formInfo.name}
             onChange={handleChange}
           />
           <input
@@ -99,13 +130,18 @@ function Signup() {
             value={formInfo.age}
             onChange={handleChange}
           />
-          <select name="gender" id="gender" onChange={handleChange} className="signupFormDropDown">
+          <select
+            name="gender"
+            id="gender"
+            onChange={handleChange}
+            className="signupFormDropDown"
+          >
             <option value="select">Gender</option>
             <option value="male">Male</option>
             <option value="female">Female</option>
             <option value="other">Others</option>
           </select>
-          <button className="signupFormButton">Sign Up</button>
+          <button className="signupFormButton" onClick={handleSubmit}>Sign Up</button>
         </div>
       </div>
     </div>
