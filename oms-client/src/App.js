@@ -12,13 +12,16 @@ import Signup from "./Components/Signup/Signup";
 
 export const ShowLogin = createContext(false);
 export const ShowSignup = createContext(false);
+export const UserDetails = createContext(null);
 
 function App() {
   const [loginShow, setLoginShow] = useState(false);
   const [showSignup, setShowSignup] = useState(false);
+  const [userDetails, setUserDetails] = useState(false);
   return (
       <ShowLogin.Provider value={[loginShow, setLoginShow]}>
         <ShowSignup.Provider value={[showSignup, setShowSignup]}>
+          <UserDetails.Provider value={[userDetails, setUserDetails]}>
           <Router>
             <Header></Header>
             <Routes>
@@ -31,6 +34,7 @@ function App() {
           </Router>
           {loginShow && <Login></Login>}
           {showSignup && <Signup></Signup>}
+          </UserDetails.Provider>
         </ShowSignup.Provider>
       </ShowLogin.Provider>
   );

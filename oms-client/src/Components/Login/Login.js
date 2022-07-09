@@ -1,14 +1,19 @@
 import React, { useState, useContext } from "react";
 import Image from "../../Assests/login-Image.webp";
 import Close from "@mui/icons-material/Close";
-import { ShowLogin, ShowSignup } from "../../App";
+import { ShowLogin, ShowSignup, UserDetails } from "../../App";
 import "./login.css";
+// import {  } from "../../App";
+import {BASE_URL} from "../../Config/BaseUrl";
+
 function Login() {
   const [formInfo, setFormInfo] = useState({
     email: "",
     password: "",
     showPassword: false,
   });
+
+  const [userDetails, setUserDetails] = useContext(UserDetails);
 
   const [loginShow, setLoginShow] = useContext(ShowLogin);
   const [showSignup, setShowSignup] = useContext(ShowSignup);
@@ -19,6 +24,29 @@ function Login() {
       [e.target.name]: e.target.value,
     });
   };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!formInfo.email || !formInfo.password) {
+      alert("Please fill all the fields");
+      return;
+    }
+    const temp = await fetch(`${BASE_URL}/login/user`, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(formInfo),
+    });
+    const response = await temp.json();
+    console.log(response);
+    if (temp.status === 200) {
+      alert("Login successful");
+      localStorage.setItem("token", response.token);
+      localStorage.setItem("userDetials",response.user_profile_details);
+      setUserDetails(response.user_profile_details);
+      setLoginShow(false);
+    }
+  }
+
 
   return (
     <div className="loginBackground">
@@ -38,7 +66,7 @@ function Login() {
               fontSize: "0.8rem",
               marginBottom: "30px",
               marginTop: "10px",
-              fontWeight: "500"
+              fontWeight: "500",
             }}
           >
             Get access to your orders, prescriptions and other benefits
@@ -73,7 +101,7 @@ function Login() {
               Show Password
             </label>
           </div>
-          <button className="loginFormButton">Sign in</button>
+          <button className="loginFormButton" onClick={handleSubmit}>Sign in</button>
           <div className="loginFormText">
             Don't have and account? &nbsp;
             <span

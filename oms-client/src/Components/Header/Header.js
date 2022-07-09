@@ -1,14 +1,25 @@
-import React, { useContext } from "react";
+import React, { useContext,useEffect } from "react";
 import Search from "@mui/icons-material/Search";
 import ShoppingCart from "@mui/icons-material/ShoppingCart";
 import image from "../../Assests/brand-logo.png";
 import Person from "@mui/icons-material/Person";
 import { Link } from "react-router-dom";
 import "./header.css";
-import { ShowLogin, ShowSignup } from "../../App";
+import { ShowLogin, ShowSignup, UserDetails } from "../../App";
+
+
 function Header() {
   const [loginShow, setLoginShow] = useContext(ShowLogin);
   const [showSignup, setShowSignup] = useContext(ShowSignup);
+  const [userDetails, setUserDetails] = useContext(UserDetails);
+
+  useEffect(() => {
+      if(localStorage.getItem("userDetails")){
+          setUserDetails(JSON.parse(localStorage.getItem("userDetails")));
+      }
+  },[userDetails]);
+
+
   return (
     <div className="navbarContainer">
       <Link to={"/"} style={{ textDecoration: "none", color: "black" }} onClick={()=>{ setShowSignup(false);
@@ -20,7 +31,7 @@ function Header() {
       </Link>
 
       <div className="navbarMenu">
-        <li
+        {!userDetails && <li
           className="navbarMenuItem"
           onClick={() => {
             setShowSignup(false);
@@ -28,8 +39,8 @@ function Header() {
           }}
         >
           Login
-        </li>
-        <li
+        </li>}
+        {!userDetails && <li
           className="navbarMenuItem"
           onClick={() => {
             setShowSignup(true);
@@ -37,19 +48,19 @@ function Header() {
           }}
         >
           Signup
-        </li>
+        </li>}
         <li className="navbarMenuItem">About Us</li>
-        <li className="navbarMenuItem">
+        {userDetails && <li className="navbarMenuItem">
           <Link
             to={"orders"}
             style={{ textDecoration: "none", color: "black" }}
           >
             Orders
           </Link>
-        </li>
-        <li className="navbarMenuItem">
-          <Person></Person>sagarmish1234
-        </li>
+        </li>}
+        {userDetails && <li className="navbarMenuItem">
+          <Person></Person>{userDetails.email}
+        </li>}
       </div>
       <Link to={"/checkout"} style={{ textDecoration: "none", color: "black" }}>
       <div className="navbarCart">
