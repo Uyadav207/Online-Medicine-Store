@@ -1,14 +1,15 @@
 .signupBackground {
+  display: flex;
   width: 100vw;
-  /* height: 100vh; */
-  height: 100%;
-  backdrop-filter: blur(5px);
-  position: absolute;
+  height: 100vh;
+  backdrop-filter: blur(50px);
   top: 0vh;
   background-color: rgba(0, 0, 0, 0.375);
   left: 0vw;
-  padding-top: 40px;
+  justify-content: center;
   z-index: 100;
+  overflow: hidden;
+  position: fixed;
 }
 
 .signupContainer {

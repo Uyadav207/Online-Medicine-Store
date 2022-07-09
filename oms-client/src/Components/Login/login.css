@@ -1,13 +1,16 @@
 .loginBackground {
+  display: flex;
   width: 100vw;
-  /* height: 100vh; */
   height: 100%;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(50px);
   position: absolute;
   top: 0vh;
   background-color: rgba(0, 0, 0, 0.496);
   left: 0vw;
   padding-top: 40px;
+  overflow: hidden;
+  position: fixed;
+ justify-content: center;
 }
 .loginContainer {
   background-color: rgb(245, 241, 241);
