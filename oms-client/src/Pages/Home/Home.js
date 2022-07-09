@@ -2,11 +2,14 @@ import React from "react";
 import "./home.css";
 import medicines from './data';
 import GridWrapper from "./GridWrapper/GridWrapper";
+import Banner from "./Crousel/Banner";
+
 
 function Home() {
   return (
     <div className="home">
-      <div claclassNamess="container">
+      <Banner />
+      <div claclassNamess="container justify-content-md-center">
         <div className="row">
           {medicines.map(medicine => 
               <GridWrapper

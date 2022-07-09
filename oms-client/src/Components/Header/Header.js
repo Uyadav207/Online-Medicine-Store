@@ -51,10 +51,12 @@ function Header() {
           <Person></Person>sagarmish1234
         </li>
       </div>
+      <Link to={"/checkout"} style={{ textDecoration: "none", color: "black" }}>
       <div className="navbarCart">
         <div className="navbarCartCount">0</div>
         <ShoppingCart className="navbarCartIcon"></ShoppingCart>
       </div>
+      </Link>
       <div className="navbarSearchBox">
         <input
           type="text"
