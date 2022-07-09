@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -46,8 +47,6 @@ public class CartService {
                 cart.setQuantity(quantity);
                 cartRepository.save(cart);
             }
-            productsRepository.findById(productId).get()
-                    .setProductStock(productsRepository.findById(productId).get().getProductStock() - quantity);
             return getCartByUserId(userId);
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
@@ -56,7 +55,11 @@ public class CartService {
 
     public List<Cart> getCartByUserId(long userId) throws Exception {
         try {
-            return cartRepository.findByUserId(userId);
+            Optional<List<Cart>> cart = cartRepository.findByUserId(userId);
+            if (cart.isPresent() && !cart.get().isEmpty())
+                return cart.get();
+            else
+                throw new Exception("Cart is empty");
         } catch (Exception e) {
             throw new RuntimeException(e.getMessage());
         }

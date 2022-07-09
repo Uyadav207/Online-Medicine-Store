@@ -1,13 +1,14 @@
 package com.example.Online_medical_store.controller;
 
-import com.example.Online_medical_store.controller.requestPOJO.ApiResponse;
 import com.example.Online_medical_store.controller.requestPOJO.ErrorResponse;
 import com.example.Online_medical_store.entity.Cart;
 import com.example.Online_medical_store.jwtconfiguration.MedicineConfiguration;
 import com.example.Online_medical_store.service.cartService.CartService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -55,16 +56,13 @@ public class AddtoCart {
         }
     }
 
-    @RequestMapping("getCartsByUserId")
-    public ResponseEntity<?> getCartsByUserId(@RequestBody HashMap<String,String> getCartRequest) {
+    @RequestMapping("getCartsByUserId/{id}")
+    public ResponseEntity<?> getCartsByUserId(@PathVariable Long id) {
         try {
-            String keys[] = {"userId"};
-            if(MedicineConfiguration.validationWithHashMap(keys, getCartRequest)) {
-            }
-            List<Cart> obj = cartService.getCartByUserId(Long.parseLong(getCartRequest.get("userId")));
+            List<Cart> obj = cartService.getCartByUserId(id);
             return ResponseEntity.ok(obj);
         }catch(Exception e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorResponse(e.getMessage()));
         }
     }
 }

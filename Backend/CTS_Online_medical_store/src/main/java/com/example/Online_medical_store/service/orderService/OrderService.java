@@ -3,6 +3,8 @@ package com.example.Online_medical_store.service.orderService;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +13,7 @@ import com.example.Online_medical_store.repository.OrdersRepository;
 
 
 @Service
+@Transactional
 public class OrderService {
 
     @Autowired
