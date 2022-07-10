@@ -4,7 +4,7 @@ import Close from "@mui/icons-material/Close";
 import { ShowLogin, ShowSignup, UserDetails } from "../../App";
 import "./login.css";
 // import {  } from "../../App";
-import {BASE_URL} from "../../Config/BaseUrl";
+import { BASE_URL } from "../../Config/BaseUrl";
 
 function Login() {
   const [formInfo, setFormInfo] = useState({
@@ -40,13 +40,15 @@ function Login() {
     console.log(response);
     if (temp.status === 200) {
       alert("Login successful");
-      localStorage.setItem("token", response.token);
-      localStorage.setItem("userDetials",response.user_profile_details);
+      localStorage.setItem("token", JSON.stringify(response.token));
+      localStorage.setItem(
+        "userDetails",
+        JSON.stringify(response.user_profile_details)
+      );
       setUserDetails(response.user_profile_details);
       setLoginShow(false);
     }
-  }
-
+  };
 
   return (
     <div className="loginBackground">
@@ -101,7 +103,9 @@ function Login() {
               Show Password
             </label>
           </div>
-          <button className="loginFormButton" onClick={handleSubmit}>Sign in</button>
+          <button className="loginFormButton" onClick={handleSubmit}>
+            Sign in
+          </button>
           <div className="loginFormText">
             Don't have and account? &nbsp;
             <span
