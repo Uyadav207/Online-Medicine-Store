@@ -1,34 +1,30 @@
 import React from 'react'
 import './checkoutcardproduct.css'
+import DeleteIcon from '@mui/icons-material/Delete';
+import { Input } from '@mui/material';
 
 function CheckoutcardProduct() {
     return (
-        <div className='col container_bill'>
-            <div className='title'>
-                <p>Billing Details</p>
-            </div>
-            <div className='container_subtotal_inner'>
-                <p className='subtotal'>
-                    <small>Subtotal</small>
-                    <strong>$ 4000</strong>
-                </p>
-                <p className='shipping_charge'>
-                    <small>Shipping</small>
-                    <strong>$ 4000</strong>
-                </p>
-                <p className='total'>
-                    <small>Total (tax Incl.)</small>
-                    <strong>$ 3000.00</strong>
-                </p>
-                <div className='place-order'>
-                    <p>
-                        <small>$ 4000</small>
-                        <small>Checkout</small>
+            <>  
+                <div className='continue-shopping-info-inner'>
+                    <p className='product-name'>
+                        <strong>Himalaya Wellness Pure Herbs Ashvagandha Tablet</strong>
+                        <small className='price'>$ 500</small>
+                    </p>
+                    <p className='product-description'>
+                    packet of 60 tablets
+                    <div className='quantity'>
+                        <p className='btn'>+</p>
+                        <input maxLength={2} />
+                        <p className='btn'>-</p>
+                        </div>
+                    </p>
+                    <p className='buttons'>
+                    <small className='remove'> <DeleteIcon color='#d4d4d4' fontSize='34' /> Remove</small>
                     </p>
                 </div>
-            </div>
-        </div>
+                </>
     )
 }
 
-export default CheckoutcardProduct
+export default CheckoutcardProduct;

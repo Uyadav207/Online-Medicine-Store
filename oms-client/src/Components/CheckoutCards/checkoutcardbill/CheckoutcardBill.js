@@ -1,5 +1,6 @@
 import React from 'react'
 import './checkoutcardbill.css'
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 
 function CheckoutcardBill() {
     return (
@@ -23,7 +24,7 @@ function CheckoutcardBill() {
                 <div className='place-order'>
                     <p>
                         <small>$ 4000</small>
-                        <small>Checkout</small>
+                        <small>Checkout <ArrowForwardIcon fontSize='small'  style={{marginLeft: "10"}}/></small>
                     </p>
                 </div>
             </div>
