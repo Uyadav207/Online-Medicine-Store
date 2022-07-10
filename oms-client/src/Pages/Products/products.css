@@ -1,0 +1,16 @@
+.productsContainer{
+    min-height: 100vh;
+    height: max-content;
+    padding-bottom: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    row-gap: 20px;
+    align-items:top;
+    justify-items: center;
+    padding-top: 30px;
+}
+.productsNotFound{
+    text-align: center;
+    margin-top: 50px;
+
+}

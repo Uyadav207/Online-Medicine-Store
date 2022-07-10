@@ -6,16 +6,19 @@ import Person from "@mui/icons-material/Person";
 import { Link } from "react-router-dom";
 import "./header.css";
 import { BASE_URL } from "../../Config/BaseUrl";
-import { ShowLogin, ShowSignup, UserDetails, ProductHome } from "../../App";
+import { ShowLogin, ShowSignup, UserDetails, ProductHome ,SearchBox} from "../../App";
 import Logout from "@mui/icons-material/Logout";
+import { useNavigate } from "react-router-dom";
 
 function Header() {
   const [loginShow, setLoginShow] = useContext(ShowLogin);
   const [showSignup, setShowSignup] = useContext(ShowSignup);
   const [userDetails, setUserDetails] = useContext(UserDetails);
   const [productHome, setProductHome] = useContext(ProductHome);
+  const [searchBox, setSearchBox] = useContext(SearchBox);
+  const [temp, setTemp] = useState(false);
   const [showLogout, setShowLogout] = useState(false);
-
+  const navigate = useNavigate();
   useEffect(() => {
     if (localStorage.getItem("userDetails")) {
       setUserDetails(JSON.parse(localStorage.getItem("userDetails")));
@@ -31,13 +34,12 @@ function Header() {
     getProducts();
   }, []);
 
-
-  const handleLogout = ()=>{
+  const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("userDetails");
     setUserDetails(null);
     setShowLogout(false);
-  }
+  };
 
   return (
     <div className="navbarContainer">
@@ -51,7 +53,7 @@ function Header() {
       >
         <div className="navbarBrand">
           <img src={image} alt="" className="navbarBrandImage" />
-          <div className="navbarBrandText">WellWise</div>
+          <div className="navbarBrandText">CogMed</div>
         </div>
       </Link>
 
@@ -114,13 +116,26 @@ function Header() {
           <ShoppingCart className="navbarCartIcon"></ShoppingCart>
         </div>
       </Link>
+
       <div className="navbarSearchBox">
         <input
           type="text"
           className="navbarSearchBoxInput"
           placeholder="Search"
+          name="searchBox"
+          onChange={(e) => {
+            setTemp(e.target.value);
+          }}
         />
-        <div className="navbarSearchBoxIcon">
+        <div
+          className="navbarSearchBoxIcon"
+          onClick={() => {
+            if (temp) {
+              setSearchBox(temp);
+              navigate(`/products/${temp}`);
+            }
+          }}
+        >
           <Search />
         </div>
       </div>
