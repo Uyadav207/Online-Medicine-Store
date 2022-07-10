@@ -102,3 +102,11 @@
   font-weight: bold;
   color: black;
 }
+
+.dropdown{
+  z-index: 100;
+  background-color: white;
+  height: 30px;
+  border-top:2px solid  #ebeaea;
+  border-radius: 7px;
+}
