@@ -21,6 +21,7 @@ public class Products {
     private long id;
     private String productName;
     private double price;
+    private String image;
     @Column(updatable=false)
     private Date productMfd;
     private int productStock;
