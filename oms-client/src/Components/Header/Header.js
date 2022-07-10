@@ -1,29 +1,54 @@
-import React, { useContext,useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Search from "@mui/icons-material/Search";
 import ShoppingCart from "@mui/icons-material/ShoppingCart";
 import image from "../../Assests/brand-logo.png";
 import Person from "@mui/icons-material/Person";
 import { Link } from "react-router-dom";
 import "./header.css";
-import { ShowLogin, ShowSignup, UserDetails } from "../../App";
-
+import { BASE_URL } from "../../Config/BaseUrl";
+import { ShowLogin, ShowSignup, UserDetails, ProductHome } from "../../App";
+import Logout from "@mui/icons-material/Logout";
 
 function Header() {
   const [loginShow, setLoginShow] = useContext(ShowLogin);
   const [showSignup, setShowSignup] = useContext(ShowSignup);
   const [userDetails, setUserDetails] = useContext(UserDetails);
+  const [productHome, setProductHome] = useContext(ProductHome);
+  const [showLogout, setShowLogout] = useState(false);
 
   useEffect(() => {
-      if(localStorage.getItem("userDetails")){
-          setUserDetails(JSON.parse(localStorage.getItem("userDetails")));
-      }
-  },[userDetails]);
+    if (localStorage.getItem("userDetails")) {
+      setUserDetails(JSON.parse(localStorage.getItem("userDetails")));
+    }
+    const getProducts = async () => {
+      const response = await fetch(`${BASE_URL}/products/getAllProducts`, {
+        method: "GET",
+      });
+      const data = await response.json();
+      setProductHome(data.filter((medicine) => medicine.id <= 12));
+    };
 
+    getProducts();
+  }, []);
+
+
+  const handleLogout = ()=>{
+    localStorage.removeItem("token");
+    localStorage.removeItem("userDetails");
+    setUserDetails(null);
+    setShowLogout(false);
+  }
 
   return (
     <div className="navbarContainer">
-      <Link to={"/"} style={{ textDecoration: "none", color: "black" }} onClick={()=>{ setShowSignup(false);
-            setLoginShow(false); }}>
+      <Link
+        to={"/"}
+        style={{ textDecoration: "none", color: "black" }}
+        onClick={() => {
+          setShowSignup(false);
+          setLoginShow(false);
+        }}
+      >
         <div className="navbarBrand">
           <img src={image} alt="" className="navbarBrandImage" />
           <div className="navbarBrandText">WellWise</div>
@@ -31,42 +56,63 @@ function Header() {
       </Link>
 
       <div className="navbarMenu">
-        {!userDetails && <li
-          className="navbarMenuItem"
-          onClick={() => {
-            setShowSignup(false);
-            setLoginShow(true);
-          }}
-        >
-          Login
-        </li>}
-        {!userDetails && <li
-          className="navbarMenuItem"
-          onClick={() => {
-            setShowSignup(true);
-            setLoginShow(false);
-          }}
-        >
-          Signup
-        </li>}
-        <li className="navbarMenuItem">About Us</li>
-        {userDetails && <li className="navbarMenuItem">
-          <Link
-            to={"orders"}
-            style={{ textDecoration: "none", color: "black" }}
+        {!userDetails && (
+          <li
+            className="navbarMenuItem"
+            onClick={() => {
+              setShowSignup(false);
+              setLoginShow(true);
+            }}
           >
-            Orders
-          </Link>
-        </li>}
-        {userDetails && <li className="navbarMenuItem">
-          <Person></Person>{userDetails.email}
-        </li>}
+            Login
+          </li>
+        )}
+        {!userDetails && (
+          <li
+            className="navbarMenuItem"
+            onClick={() => {
+              setShowSignup(true);
+              setLoginShow(false);
+            }}
+          >
+            Signup
+          </li>
+        )}
+        <li className="navbarMenuItem">About Us</li>
+        {userDetails && (
+          <li className="navbarMenuItem">
+            <Link
+              to={"orders"}
+              style={{ textDecoration: "none", color: "black" }}
+            >
+              Orders
+            </Link>
+          </li>
+        )}
+        {userDetails && (
+          <div>
+            <li
+              className="navbarMenuItem"
+              onClick={() => {
+                setShowLogout(!showLogout);
+              }}
+            >
+              <Person></Person>
+              {userDetails.email}
+            </li>
+            {showLogout && (
+              <li className="navbarMenuItem dropdown" onClick={handleLogout}>
+                <Logout /> Logout
+              </li>
+            )}
+          </div>
+        )}
       </div>
       <Link to={"/checkout"} style={{ textDecoration: "none", color: "black" }}>
-      <div className="navbarCart">
-        <div className="navbarCartCount">0</div>
-        <ShoppingCart className="navbarCartIcon"></ShoppingCart>
-      </div>
+        <div className="navbarCart">
+          <div className="navbarCartCount">0</div>
+          <ShoppingCart className="navbarCartIcon"></ShoppingCart>
+        </div>
       </Link>
       <div className="navbarSearchBox">
         <input
