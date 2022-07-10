@@ -1,11 +1,10 @@
 import React, { useState, useContext } from "react";
 import Image from "../../Assests/login-Image.webp";
 import Close from "@mui/icons-material/Close";
-import { ShowLogin, ShowSignup, UserDetails } from "../../App";
+import { ShowLogin, ShowSignup, UserDetails, Cart, ProductHome } from "../../App";
 import "./login.css";
 // import {  } from "../../App";
 import { BASE_URL } from "../../Config/BaseUrl";
-
 function Login() {
   const [formInfo, setFormInfo] = useState({
     email: "",
@@ -14,7 +13,8 @@ function Login() {
   });
 
   const [userDetails, setUserDetails] = useContext(UserDetails);
-
+  const [cart, setCart] = useContext(Cart);
+  const [productHome, setProductHome] = useContext(ProductHome);
   const [loginShow, setLoginShow] = useContext(ShowLogin);
   const [showSignup, setShowSignup] = useContext(ShowSignup);
 
@@ -23,6 +23,36 @@ function Login() {
       ...formInfo,
       [e.target.name]: e.target.value,
     });
+  };
+
+  const getCart = async () => {
+    const response = await fetch(
+      `${BASE_URL}/addtocart/getCartsByUserId/${
+        JSON.parse(localStorage.getItem("userDetails")).id
+      }`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${JSON.parse(
+            localStorage.getItem("token")
+          )}`,
+        },
+      }
+    );
+    const data = await response.json();
+    // console.log(data);
+    var temp = [];
+    if (data.length > 0) {
+      data.map((item) => {
+        let product = productHome.filter(
+          (medicine) => medicine.id === item.productId
+        )[0];
+        product = { ...product, quantity: item.qty };
+        temp = [...temp, product];
+      });
+    }
+    setCart(temp);
+    // console.log(productHome);
   };
 
   const handleSubmit = async (e) => {
@@ -46,6 +76,7 @@ function Login() {
         JSON.stringify(response.user_profile_details)
       );
       setUserDetails(response.user_profile_details);
+      getCart();
       setLoginShow(false);
     }
   };

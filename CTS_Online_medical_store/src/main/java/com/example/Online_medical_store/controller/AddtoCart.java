@@ -28,6 +28,7 @@ public class AddtoCart {
     public ResponseEntity<?> addCartwithProduct(@RequestBody HashMap<String, String> addCartRequest) {
         try {
             String keys[] = {"userId", "productId" , "qty"};
+            System.out.println(addCartRequest);
             if (MedicineConfiguration.validationWithHashMap(keys, addCartRequest)) {
 
             }
