@@ -114,7 +114,7 @@ public class OnlineMedicalStoreApplication {
 						"https://onemg.gumlet.io/image/upload/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/v1600179092/cropped/ud4pymcjxgaziyzgqhso.jpg",
 						new Date(2021, 8, 14), 4000, "4.5", new Date(2022, 8, 12),
 						"decription2"),
-				new Products(20, "Augmentin DDS Suspension", 300,
+				new Products(20, "Augmentin DDS", 300,
 						"https://onemg.gumlet.io/image/upload/l_watermark_346,w_480,h_480/a_ignore,w_480,h_480,c_fit,q_auto,f_auto/v1600083149/cropped/kafbzrabyoihauyvnig4.jpg",
 						new Date(2021, 8, 14), 4000, "4.5", new Date(2022, 8, 12),
 						"decription2"))
