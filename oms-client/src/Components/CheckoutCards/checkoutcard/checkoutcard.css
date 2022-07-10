@@ -1,0 +1,25 @@
+.container_outer {
+    background-color: rgb(237, 237, 237);
+    position: relative;
+    height: max-content;
+    min-height: 100vh;
+    max-width: 1300px;
+    margin-right: auto;
+    margin-left: auto;
+    overflow: scroll;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    padding: 5%;
+    padding-top: 0%;
+}
+
+.inner_container {
+    background-color: #ffffff !important;
+    height:fit-content;
+    margin-top: 10%;
+    border-radius: 20px;
+}
+
+.cart_box {
+    padding: 0%;
+}

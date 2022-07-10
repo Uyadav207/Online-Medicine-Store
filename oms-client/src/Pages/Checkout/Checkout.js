@@ -1,13 +1,14 @@
 import React from 'react'
+import CheckoutCard from '../../Components/CheckoutCards/checkoutcard/CheckoutCard';
 import CheckoutcartEmpty from '../../Components/CheckoutCards/checkoutcartEmpty/CheckoutcartEmpty'
 
 function Checkout() {
-  const isCartEmpty = true;
+  const isCartEmpty = false;
   
   return (
     <div>
       {
-          (isCartEmpty) ? <CheckoutcartEmpty /> : <h1>Cart</h1>
+          (isCartEmpty) ? <CheckoutcartEmpty /> : <CheckoutCard />
       }
     </div>
   )
