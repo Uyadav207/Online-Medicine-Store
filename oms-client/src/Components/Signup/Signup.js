@@ -4,7 +4,6 @@ import Image from "../../Assests/signup-image.webp";
 import Close from "@mui/icons-material/Close";
 import { ShowSignup } from "../../App";
 import { BASE_URL } from "../../Config/BaseUrl";
-import {useNavigate} from "react-router-dom";
 
 function Signup() {
   const [showSignup, setShowSignup] = useContext(ShowSignup);

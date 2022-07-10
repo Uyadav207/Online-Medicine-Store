@@ -10,7 +10,7 @@
   padding: 0px 90px;
   color: black;
   height: 70px;
-  border-bottom: 1px solid #cbcbcb;
+  border-bottom: 1px solid #ebeaea;
 }
 
 .navbarBrand {
@@ -86,10 +86,7 @@
   font-weight:  600;
 }
 .navbarMenuItem:hover {
-  background-color: rgb(251, 251, 251);
-  /* -webkit-box-shadow: 12px 13px 5px -12px rgba(0,0,0,0.75);
-  -moz-box-shadow: 12px 13px 5px -12px rgba(0,0,0,0.75);
-  box-shadow: 12px 13px 5px -12px rgba(0,0,0,0.75); */
+  background-color: rgb(216, 216, 216);
 }
 
 .navbarCart {
