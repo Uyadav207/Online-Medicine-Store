@@ -3,7 +3,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 function Banner() {
     return (
-        <Carousel className="home_image" autoPlay={true} showArrows={true} showThumbs={false} data-ride="carousel">
+        <Carousel className="home_image" autoPlay={true} showArrows={true} showThumbs={false}>
             <img
                 src="https://m.media-amazon.com/images/I/71qid7QFWJL._SX3000_.jpg"
                 alt="Banner_1"

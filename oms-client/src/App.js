@@ -13,34 +13,30 @@ import Signup from "./Components/Signup/Signup";
 export const ShowLogin = createContext(false);
 export const ShowSignup = createContext(false);
 export const UserDetails = createContext(null);
-export const ProductHome = createContext([]);
 
 function App() {
   const [loginShow, setLoginShow] = useState(false);
   const [showSignup, setShowSignup] = useState(false);
   const [userDetails, setUserDetails] = useState(false);
-  const [productHome, setProductHome] = useState([]);
   return (
-    <ShowLogin.Provider value={[loginShow, setLoginShow]}>
-      <ShowSignup.Provider value={[showSignup, setShowSignup]}>
-        <ProductHome.Provider value={[productHome, setProductHome]}>
+      <ShowLogin.Provider value={[loginShow, setLoginShow]}>
+        <ShowSignup.Provider value={[showSignup, setShowSignup]}>
           <UserDetails.Provider value={[userDetails, setUserDetails]}>
-            <Router>
-              <Header></Header>
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/products/*" element={<Products />} />
-                <Route path="/checkout" element={<Checkout />} />
-                <Route path="/orders" element={<Orders />} />
-              </Routes>
-              <Footer></Footer>
-            </Router>
-            {loginShow && <Login></Login>}
-            {showSignup && <Signup></Signup>}
+          <Router>
+            <Header></Header>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/products/*" element={<Products />} />
+              <Route path="/checkout" element={<Checkout />} />
+              <Route path="/orders" element={<Orders />} />
+            </Routes>
+            <Footer></Footer>
+          </Router>
+          {loginShow && <Login></Login>}
+          {showSignup && <Signup></Signup>}
           </UserDetails.Provider>
-        </ProductHome.Provider>
-      </ShowSignup.Provider>
-    </ShowLogin.Provider>
+        </ShowSignup.Provider>
+      </ShowLogin.Provider>
   );
 }
 
