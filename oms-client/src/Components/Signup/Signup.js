@@ -45,11 +45,13 @@ function Signup() {
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify(formInfo),
     });
-    const response = await temp.json();
-    console.log(response)
     if (temp.status === 200) {
+      const response = await temp.json();
+      console.log(response)
       alert("Signup successful");
       setShowSignup(false);
+    }else{
+      alert("Signup failed");
     }
   };
 
