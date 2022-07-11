@@ -12,39 +12,7 @@ function Home() {
 
   const [productHome, setProductHome] = useContext(ProductHome);
   const [cart, setCart] = useContext(Cart);
-  const getCart = async () => {
-      const response = await fetch(
-        `${BASE_URL}/addtocart/getCartsByUserId/${
-          JSON.parse(localStorage.getItem("userDetails")).id
-        }`,
-        {
-          method: "GET",
-          headers: {
-            Authorization: `Bearer ${JSON.parse(
-              localStorage.getItem("token")
-            )}`,
-          },
-        }
-      );
-      const data = await response.json();
-      // console.log(data);
-      var temp = [];
-      if (data.length > 0) {
-        data.map((item) => {
-          let product = productHome.filter(
-            (medicine) => medicine.id === item.productId
-          )[0];
-          product = { ...product, quantity: item.quantity };
-          temp = [...temp, product];
-        });
-      }
-      setCart(temp);
-      // console.log(temp);
-    };
-  useEffect(()=>{
-    getCart();
-  },[productHome])
-
+  
   return (
     <div className="home">
       <Banner />

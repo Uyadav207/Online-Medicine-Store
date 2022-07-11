@@ -43,8 +43,17 @@ function ProductCard({ image, name, description, rating, price, id }) {
     if (response.status === 200) {
       setCart([
         ...cart,
-        { image, name, description, rating, price, id, quantity: 1 }
+        {
+          image,
+          productName: name,
+          productDesc: description,
+          productRating: rating,
+          price,
+          id,
+          quantity: 1,
+        },
       ]);
+      // setTimeout(()=>{navigate("/checkout")},1000)
       navigate("/checkout");
     } else {
       alert("Something went wrong");
