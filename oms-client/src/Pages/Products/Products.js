@@ -40,6 +40,7 @@ function Products() {
             description={medicine.productDesc}
             rating={medicine.productRating}
             price={medicine.price}
+            id={medicine.id}
           />
         ))}
       </div>

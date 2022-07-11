@@ -54,7 +54,7 @@ function ProductCard({ image, name, description, rating, price, id }) {
         },
       ]);
       // setTimeout(()=>{navigate("/checkout")},1000)
-      navigate("/checkout");
+      // navigate("/checkout");
     } else {
       alert("Something went wrong");
     }
