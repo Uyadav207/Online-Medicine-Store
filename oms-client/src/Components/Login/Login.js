@@ -66,9 +66,9 @@ function Login() {
       headers: { "content-type": "application/json" },
       body: JSON.stringify(formInfo),
     });
-    const response = await temp.json();
-    console.log(response);
     if (temp.status === 200) {
+      const response = await temp.json();
+      console.log(response);
       alert("Login successful");
       localStorage.setItem("token", JSON.stringify(response.token));
       localStorage.setItem(
