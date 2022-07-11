@@ -4,7 +4,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { Input } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
-import { Cart, UserDetails } from "../../../App";
+import { Cart, UserDetails, ProductHome } from "../../../App";
 import { BASE_URL } from "../../../Config/BaseUrl";
 
 function CheckoutcardProduct({
@@ -15,8 +15,69 @@ function CheckoutcardProduct({
   quantity,
   id,
 }) {
+  const [productHome, setProductHome] = useContext(ProductHome);
   const [cart, setCart] = useContext(Cart);
   const [userDetails, setUserDetails] = useContext(UserDetails);
+
+  const handleDelete = async () => {
+    const newCart = cart.filter((item) => item.id === id)[0];
+    const product = {
+      userId: userDetails.id,
+      productId: id,
+      qty: newCart.quantity - 1,
+    };
+    const response = await fetch(`${BASE_URL}/addtocart/addProduct`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
+      },
+      body: JSON.stringify(product),
+    });
+    newCart.quantity -= 1;
+    const temp = await response.json();
+    if (response.status === 200) {
+      const carts = temp.map((item) => {
+        return {
+          ...productHome.filter((product) => product.id === item.productId)[0],
+          quantity: item.quantity,
+        };
+      });
+      setCart(carts);
+    } else {
+      alert("Something went wrong");
+    }
+  };
+  const handleAdd = async () => {
+    const newCart = cart.filter((item) => item.id === id)[0];
+    const product = {
+      userId: userDetails.id,
+      productId: id,
+      qty: newCart.quantity + 1,
+    };
+    const response = await fetch(`${BASE_URL}/addtocart/addProduct`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
+      },
+      body: JSON.stringify(product),
+    });
+    newCart.quantity += 1;
+    const temp = await response.json();
+    if (response.status === 200) {
+      const carts = temp.map((item) => {
+        return {
+          ...productHome.filter((product) => product.id === item.productId)[0],
+          quantity: item.quantity,
+        };
+      });
+      setCart(carts);
+    } else {
+      alert("Something went wrong");
+    }
+  };
+
   const handleRemove = async () => {
     const response = await fetch(
       `${BASE_URL}/addtocart/removeProductFromCart`,
@@ -29,16 +90,8 @@ function CheckoutcardProduct({
         body: JSON.stringify({ userId: userDetails.id, productId: id }),
       }
     );
-    // const data = await response.json();
     setCart(cart.filter((item) => item.id !== id));
     console.log(cart);
-    
-    // if (response.status === 200) {
-    // } else {
-    //   alert("Something went wrong");
-    // }
-    // setCart(temp);
-    // console.log(temp);
   };
 
   return (
@@ -46,16 +99,16 @@ function CheckoutcardProduct({
       <div className="continue-shopping-info-inner">
         <p className="product-name">
           <strong>{name}</strong>
-          <small className="price">₹ {price}</small>
+          <small className="product-price">₹ {price}</small>
         </p>
         <p className="product-description">
           {description}
           <div className="quantity">
-            <span className="subtractButton">
+            <span className="subtractButton" onClick={handleDelete}>
               <RemoveIcon></RemoveIcon>
             </span>
             <input maxLength={2} value={quantity} />
-            <span className="addButton">
+            <span className="addButton" onClick={handleAdd}>
               <AddIcon></AddIcon>
             </span>
           </div>
