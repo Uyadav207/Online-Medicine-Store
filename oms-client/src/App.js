@@ -15,6 +15,7 @@ export const ShowSignup = createContext(false);
 export const UserDetails = createContext(null);
 export const ProductHome = createContext([]);
 export const SearchBox = createContext(null);
+export const Cart = createContext([]);
 
 function App() {
   const [loginShow, setLoginShow] = useState(false);
@@ -22,25 +23,28 @@ function App() {
   const [userDetails, setUserDetails] = useState(false);
   const [productHome, setProductHome] = useState([]);
   const [searchBox, setSearchBox] = useState(null);
+  const [cart, setCart] = useState([]);
   return (
     <ShowLogin.Provider value={[loginShow, setLoginShow]}>
       <ShowSignup.Provider value={[showSignup, setShowSignup]}>
         <ProductHome.Provider value={[productHome, setProductHome]}>
           <SearchBox.Provider value={[searchBox, setSearchBox]}>
-            <UserDetails.Provider value={[userDetails, setUserDetails]}>
-              <Router>
-                <Header></Header>
-                <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/products/*" element={<Products />} />
-                  <Route path="/checkout" element={<Checkout />} />
-                  <Route path="/orders" element={<Orders />} />
-                </Routes>
-                <Footer></Footer>
-              </Router>
-              {loginShow && <Login></Login>}
-              {showSignup && <Signup></Signup>}
-            </UserDetails.Provider>
+            <Cart.Provider value={[cart, setCart]}>
+              <UserDetails.Provider value={[userDetails, setUserDetails]}>
+                <Router>
+                  <Header></Header>
+                  <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/products/*" element={<Products />} />
+                    <Route path="/checkout" element={<Checkout />} />
+                    <Route path="/orders" element={<Orders />} />
+                  </Routes>
+                  <Footer></Footer>
+                </Router>
+                {loginShow && <Login></Login>}
+                {showSignup && <Signup></Signup>}
+              </UserDetails.Provider>
+            </Cart.Provider>  
           </SearchBox.Provider>
         </ProductHome.Provider>
       </ShowSignup.Provider>

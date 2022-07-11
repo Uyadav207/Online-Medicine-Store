@@ -66,7 +66,7 @@ public class LoginController {
         try {
             Users user = userService.getUserDetailsById(_getUserId());
             HashMap<String,String> response = new HashMap<String,String>();
-            response.put("user_id", ""+_getUserId());
+            response.put("id", ""+_getUserId());
             response.put("email", user.getEmail());
             response.put("name", user.getName());
             response.put("address", user.getAddress());

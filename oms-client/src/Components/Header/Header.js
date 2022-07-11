@@ -6,7 +6,14 @@ import Person from "@mui/icons-material/Person";
 import { Link } from "react-router-dom";
 import "./header.css";
 import { BASE_URL } from "../../Config/BaseUrl";
-import { ShowLogin, ShowSignup, UserDetails, ProductHome ,SearchBox} from "../../App";
+import {
+  ShowLogin,
+  ShowSignup,
+  UserDetails,
+  ProductHome,
+  SearchBox,
+  Cart,
+} from "../../App";
 import Logout from "@mui/icons-material/Logout";
 import { useNavigate } from "react-router-dom";
 
@@ -16,10 +23,12 @@ function Header() {
   const [userDetails, setUserDetails] = useContext(UserDetails);
   const [productHome, setProductHome] = useContext(ProductHome);
   const [searchBox, setSearchBox] = useContext(SearchBox);
+  const [cart, setCart] = useContext(Cart);
   const [temp, setTemp] = useState(false);
   const [showLogout, setShowLogout] = useState(false);
   const navigate = useNavigate();
   useEffect(() => {
+    
     if (localStorage.getItem("userDetails")) {
       setUserDetails(JSON.parse(localStorage.getItem("userDetails")));
     }
@@ -32,6 +41,8 @@ function Header() {
     };
 
     getProducts();
+    // getCart();
+    return;
   }, []);
 
   const handleLogout = () => {
@@ -39,6 +50,7 @@ function Header() {
     localStorage.removeItem("userDetails");
     setUserDetails(null);
     setShowLogout(false);
+    setCart([]);
   };
 
   return (
@@ -112,7 +124,7 @@ function Header() {
       </div>
       <Link to={"/checkout"} style={{ textDecoration: "none", color: "black" }}>
         <div className="navbarCart">
-          <div className="navbarCartCount">0</div>
+          <div className="navbarCartCount">{cart.length}</div>
           <ShoppingCart className="navbarCartIcon"></ShoppingCart>
         </div>
       </Link>
