@@ -2,11 +2,11 @@ import React from 'react'
 import ProductCard from '../ProductCard/ProductCard';
 import './ordercard.css';
 import { useContext ,useState, useEffect} from 'react';
-import {OrderHome, DefaultOrder} from "../../../App";
+import {OrderHome} from "../../../App";
 
-function OrderCard() {
+function OrderCard(defaultOrder) {
     const [orderHome, setOrderHome] = useContext(OrderHome);
-    const [defaultOrder, setDefaultOrder] = useContext(DefaultOrder);
+    // const [defaultOrder, setDefaultOrder] = useContext(DefaultOrder);
     const [delivery, setDelivery] = useState("");
 
     const addDates = (d,days) => {
@@ -18,7 +18,7 @@ function OrderCard() {
         // if(orderHome.length > 0){
             setDelivery(addDates(defaultOrder.createdAt,7));
         // }
-    },[defaultOrder])
+    },[])
     // console.log(defaultOrder);
     return (
         <div className='container_outer'>
@@ -31,7 +31,7 @@ function OrderCard() {
                     <hr />
                     <div className='products'>
                         {defaultOrder.products && defaultOrder.products.map((product) => {
-                            return <ProductCard {...product} />
+                            return <ProductCard {...product} key={product.id} />
                         })}
                         {/* <ProductCard /> */}
                         {/* <ProductCard /> */}
