@@ -27,12 +27,12 @@ function App() {
   const [searchBox, setSearchBox] = useState(null);
   const [cart, setCart] = useState([]);
   const [orderHome, setOrderHome] = useState([]);
-  const [defaultOrder, setDefaultOrder] = useState(false);
+  // const [defaultOrder, setDefaultOrder] = useState(false);
   return (
     <ShowLogin.Provider value={[loginShow, setLoginShow]}>
       <ShowSignup.Provider value={[showSignup, setShowSignup]}>
         <OrderHome.Provider value={[orderHome, setOrderHome]}>
-          <DefaultOrder.Provider value={[defaultOrder, setDefaultOrder]}>
+          {/* <DefaultOrder.Provider value={[defaultOrder, setDefaultOrder]}> */}
         <ProductHome.Provider value={[productHome, setProductHome]}>
           <SearchBox.Provider value={[searchBox, setSearchBox]}>
             <Cart.Provider value={[cart, setCart]}>
@@ -53,7 +53,7 @@ function App() {
             </Cart.Provider>  
           </SearchBox.Provider>
         </ProductHome.Provider>
-        </DefaultOrder.Provider>
+        {/* </DefaultOrder.Provider> */}
         </OrderHome.Provider>
       </ShowSignup.Provider>
     </ShowLogin.Provider>

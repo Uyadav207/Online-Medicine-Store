@@ -14,7 +14,7 @@ import {
   SearchBox,
   Cart,
   OrderHome,
-  DefaultOrder
+  // DefaultOrder
 } from "../../App";
 import Logout from "@mui/icons-material/Logout";
 import { useNavigate } from "react-router-dom";
@@ -25,7 +25,7 @@ function Header() {
   const [userDetails, setUserDetails] = useContext(UserDetails);
   const [productHome, setProductHome] = useContext(ProductHome);
   const [orderHome, setOrderHome] = useContext(OrderHome);
-  const [defaultOrder, setDefaultOrder] = useContext(DefaultOrder);
+  // const [defaultOrder, setDefaultOrder] = useContext(DefaultOrder);
   const [searchBox, setSearchBox] = useContext(SearchBox);
   const [cart, setCart] = useContext(Cart);
   const [temp, setTemp] = useState(false);
@@ -140,7 +140,7 @@ function Header() {
       });
       setCart([]);
       setOrderHome(temp);
-      setDefaultOrder(temp[0]);
+      // setDefaultOrder(temp[0]);
       localStorage.setItem("orderHome", JSON.stringify(temp));
       // navigate("/orders");
       // console.log(temp);
