@@ -50,9 +50,11 @@ public class OrderController {
                 order.setProductIds(request.getProductIds());
                 order.setQuantity(request.getQuantity());
                 order.setEmailId(request.getEmailId());
+                order.setCreatedAt(new Date());
                 productService.updateProductStock(request.getProductIds(), request.getQuantity());
-                Orders obj = orderService.saveOrder(order);
+                orderService.saveOrder(order);
                 cartService.removeAllCartByUserId(userId);
+                List<Orders> obj= orderService.orderByUserId(userId);
                 return ResponseEntity.ok(obj);
             } else {
                 throw new Exception("Total amount is mismatch");

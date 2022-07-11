@@ -2,15 +2,16 @@ import React, { useEffect, useState } from "react";
 import "./checkoutcardbill.css";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { useContext } from "react";
-import { Cart, Order } from "../../../App";
+import { Cart, OrderHome, ProductHome } from "../../../App";
 import { BASE_URL } from "../../../Config/BaseUrl";
 import { useNavigate } from "react-router-dom";
 
 function CheckoutcardBill() {
-  const [cart,setCart] = useContext(Cart);
+  const [cart, setCart] = useContext(Cart);
   const [total, setTotal] = useState(0);
+  const [productHome, setProductHome] = useContext(ProductHome);
   const navigate = useNavigate();
-  const [order, setOrder] = useContext(Order);
+  const [orderHome, setOrderHome] = useContext(OrderHome);
   const handleCheckout = async () => {
     const productIds = cart.map((item) => item.id);
     const quantity = cart.map((item) => item.quantity);
@@ -36,8 +37,48 @@ function CheckoutcardBill() {
     if (response.status === 200) {
       alert("Order Placed Successfully");
       const data = await response.json();
+      console.log(data);
+      var orderItems = {
+        id: 0,
+        emailId: "",
+        products: [],
+        userId: 0,
+        price: 0,
+        paymentType: "",
+        createdAt: "",
+        deliveryAddress: "",
+      };
+      var temp = [];
+      data.map((item) => {
+        orderItems.id = item.id;
+        orderItems.emailId = item.emailId;
+        orderItems.userId = item.userId;
+        orderItems.price = item.price;
+        orderItems.paymentType = item.paymentType;
+        orderItems.createdAt = item.createdAt;
+        orderItems.deliveryAddress = item.deliveryAddress;
+        item.productIds.map((product, index) => {
+          var product = {
+            ...productHome.filter((medicine) => medicine.id === product)[0],
+            quantity: item.quantity[index],
+          };
+          orderItems.products.push(product);
+        });
+        temp.push(orderItems);
+        orderItems = {
+          id: 0,
+          emailId: "",
+          products: [],
+          userId: 0,
+          price: 0,
+          paymentType: "",
+          createdAt: "",
+          deliveryAddress: "",
+        };
+        return;
+      });
       setCart([]);
-      setOrder(data);
+      setOrderHome(temp);
       navigate("/orders");
       // console.log(temp);
     } else {
