@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./checkoutcardbill.css";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { useContext } from "react";
-import { Cart, OrderHome, ProductHome } from "../../../App";
+import { Cart, OrderHome, ProductHome, DefaultOrder } from "../../../App";
 import { BASE_URL } from "../../../Config/BaseUrl";
 import { useNavigate } from "react-router-dom";
 
@@ -12,6 +12,7 @@ function CheckoutcardBill() {
   const [productHome, setProductHome] = useContext(ProductHome);
   const navigate = useNavigate();
   const [orderHome, setOrderHome] = useContext(OrderHome);
+  const [defaultOrder, setDefaultOrder] = useContext(DefaultOrder);
   const handleCheckout = async () => {
     const productIds = cart.map((item) => item.id);
     const quantity = cart.map((item) => item.quantity);
@@ -79,6 +80,8 @@ function CheckoutcardBill() {
       });
       setCart([]);
       setOrderHome(temp);
+      setDefaultOrder(temp[0]);
+      localStorage.setItem("orderHome", JSON.stringify(temp));
       navigate("/orders");
       // console.log(temp);
     } else {

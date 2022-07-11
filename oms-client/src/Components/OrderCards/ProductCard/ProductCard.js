@@ -1,7 +1,7 @@
 import React from 'react'
 import './productcard.css';
 
-function ProductCard() {
+function ProductCard({id,productName,price, quantity, productExp, productMfd, image}) {
   return (
     <div className='outer-product-container'>
         <div className='combine-image-details'>
