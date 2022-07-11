@@ -31,11 +31,44 @@
 
 .quantity {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
     padding: 0%;
 }
 
 .quantity > input {
-    width: 15%;
-    height: 60%;
+    width: 20%;
+    height: 100%;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.addButton{
+    width: 20px;
+    height: 20px;
+    background-color: #FE6F60;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    display:flex;
+    justify-content: center;
+    font-size: smaller;
+    font-weight: 500;
+    cursor: pointer;
+    align-items: center;
+}
+
+.subtractButton{
+    width: 20px;
+    height: 20px;
+    background-color: #e69c93;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    display:flex;
+    justify-content: center;
+    font-size: smaller;
+    font-weight: 500;
+    cursor: pointer;
+    align-items: center;
 }

@@ -16,9 +16,7 @@ function ProductCard({ image, name, description, rating, price, id }) {
     if (cart.filter((medicine) => medicine.id === id).length > 0) {
       // console.log(cart.filter((medicine) => medicine.name === name));
       setShowAdd(false);
-    }
-    else
-    setShowAdd(true);
+    } else setShowAdd(true);
   }, [cart]);
 
   const addToCart = async () => {
@@ -29,7 +27,7 @@ function ProductCard({ image, name, description, rating, price, id }) {
     const product = {
       userId: userDetails.id,
       productId: id,
-      qty: 1
+      qty: 1,
     };
     console.log(product);
 
@@ -37,8 +35,7 @@ function ProductCard({ image, name, description, rating, price, id }) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization:
-          `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
+        Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
       },
       body: JSON.stringify(product),
     });
@@ -46,7 +43,7 @@ function ProductCard({ image, name, description, rating, price, id }) {
     if (response.status === 200) {
       setCart([
         ...cart,
-        { image, name, description, rating, price, id, quantity: 1 },
+        { image, name, description, rating, price, id, quantity: 1 }
       ]);
       navigate("/checkout");
     } else {
