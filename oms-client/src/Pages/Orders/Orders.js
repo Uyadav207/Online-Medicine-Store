@@ -1,8 +1,9 @@
 import React from 'react'
+import OrderCard from '../../Components/OrderCards/OrderCard/OrderCard'
 
 function Orders() {
   return (
-    <div>Orders</div>
+    <div><OrderCard /></div>
   )
 }
 
