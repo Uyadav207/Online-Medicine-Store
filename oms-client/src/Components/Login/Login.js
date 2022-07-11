@@ -47,7 +47,7 @@ function Login() {
         let product = productHome.filter(
           (medicine) => medicine.id === item.productId
         )[0];
-        product = { ...product, quantity: item.qty };
+        product = { ...product, quantity: item.quantity };
         temp = [...temp, product];
       });
     }

@@ -12,7 +12,7 @@ function CheckoutCard() {
 
   return (
     <div className="container_outer">
-      <div className="container inner_container">
+      <div className="container inner_container_in">
         <div className="row">
           <div className="col mx-5 container_product">
             <div className="continue_shopping">

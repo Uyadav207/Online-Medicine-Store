@@ -26,6 +26,9 @@ function CheckoutcardProduct({
       productId: id,
       qty: newCart.quantity - 1,
     };
+    if(newCart.quantity==1){
+      return;
+    }
     const response = await fetch(`${BASE_URL}/addtocart/addProduct`, {
       method: "POST",
       headers: {
@@ -99,7 +102,7 @@ function CheckoutcardProduct({
       <div className="continue-shopping-info-inner">
         <p className="product-name">
           <strong>{name}</strong>
-          <small className="product-price">₹ {price}</small>
+          <small className="product-price">₹ {price*quantity}</small>
         </p>
         <p className="product-description">
           {description}

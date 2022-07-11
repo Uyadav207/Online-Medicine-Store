@@ -44,6 +44,9 @@ function Header() {
     return;
   }, []);
   const getCart = async () => {
+    if(!userDetails){
+      return
+    }
     const response = await fetch(
       `${BASE_URL}/addtocart/getCartsByUserId/${
         JSON.parse(localStorage.getItem("userDetails")).id
@@ -59,6 +62,7 @@ function Header() {
     // console.log(data);
     var temp = [];
     if (data.length > 0) {
+      console.log(data)
       data.map((item) => {
         let product = productHome.filter(
           (medicine) => medicine.id === item.productId
@@ -72,7 +76,7 @@ function Header() {
   };
   useEffect(() => {
     getCart();
-  }, [productHome]);
+  }, [productHome,UserDetails]);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
