@@ -49,7 +49,7 @@ function OrderCard() {
                             <div className='col delivery-adress'>
                                 <p className='p-t'>Delivery</p>
                                 <small>Address</small>
-                                <p className='d-a'>Niger A-215, Omaxe Riviera, rudrapur, Uttarakhand</p>
+                                <p className='d-a'>{defaultOrder.deliveryAddress}</p>
                             </div>
                         </div>
                     </div>
