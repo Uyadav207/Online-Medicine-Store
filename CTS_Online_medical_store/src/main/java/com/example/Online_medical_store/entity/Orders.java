@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.persistence.*;
 
@@ -33,4 +34,5 @@ public class Orders {
     private String paymentType;
     private String deliveryAddress;
     private double price;
+    private Date createdAt;
 }

@@ -13,6 +13,8 @@ import {
   ProductHome,
   SearchBox,
   Cart,
+  OrderHome,
+  DefaultOrder
 } from "../../App";
 import Logout from "@mui/icons-material/Logout";
 import { useNavigate } from "react-router-dom";
@@ -22,6 +24,8 @@ function Header() {
   const [showSignup, setShowSignup] = useContext(ShowSignup);
   const [userDetails, setUserDetails] = useContext(UserDetails);
   const [productHome, setProductHome] = useContext(ProductHome);
+  const [orderHome, setOrderHome] = useContext(OrderHome);
+  const [defaultOrder, setDefaultOrder] = useContext(DefaultOrder);
   const [searchBox, setSearchBox] = useContext(SearchBox);
   const [cart, setCart] = useContext(Cart);
   const [temp, setTemp] = useState(false);
@@ -71,11 +75,81 @@ function Header() {
         temp = [...temp, product];
       });
     }
-    setCart(temp);
+    setCart(JSON.parse(localStorage.getItem("orderHome")));
     // console.log(temp);
   };
+
+
+  const getOrder = async () => {
+    if(!userDetails){
+      return
+    }
+    const response = await fetch(
+      `${BASE_URL}/order/getOrdersByUserId/${
+        JSON.parse(localStorage.getItem("userDetails")).id
+      }`,
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${JSON.parse(localStorage.getItem("token"))}`,
+        },
+      }
+    );
+    if (response.status === 200) {
+      // alert("Order Placed Successfully");
+      const data = await response.json();
+      // console.log(data);
+      var orderItems = {
+        id: 0,
+        emailId: "",
+        products: [],
+        userId: 0,
+        price: 0,
+        paymentType: "",
+        createdAt: "",
+        deliveryAddress: "",
+      };
+      var temp = [];
+      data.map((item) => {
+        orderItems.id = item.id;
+        orderItems.emailId = item.emailId;
+        orderItems.userId = item.userId;
+        orderItems.price = item.price;
+        orderItems.paymentType = item.paymentType;
+        orderItems.createdAt = item.createdAt;
+        orderItems.deliveryAddress = item.deliveryAddress;
+        item.productIds.map((product, index) => {
+          var product = {
+            ...productHome.filter((medicine) => medicine.id === product)[0],
+            quantity: item.quantity[index],
+          };
+          orderItems.products.push(product);
+        });
+        temp.push(orderItems);
+        orderItems = {
+          id: 0,
+          emailId: "",
+          products: [],
+          userId: 0,
+          price: 0,
+          paymentType: "",
+          createdAt: "",
+          deliveryAddress: "",
+        };
+        return;
+      });
+      setCart([]);
+      setOrderHome(temp);
+      setDefaultOrder(temp[0]);
+      localStorage.setItem("orderHome", JSON.stringify(temp));
+      // navigate("/orders");
+      // console.log(temp);
+    }
+  }
+
   useEffect(() => {
     getCart();
+    getOrder();
   }, [productHome,UserDetails]);
 
   const handleLogout = () => {
