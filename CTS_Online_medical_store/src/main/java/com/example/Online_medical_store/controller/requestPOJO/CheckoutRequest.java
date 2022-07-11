@@ -17,5 +17,6 @@ public class CheckoutRequest {
     String deliveryAddress;
     ArrayList<Long> productIds;
     ArrayList<Integer> quantity;
+    String emailId;
 
 }

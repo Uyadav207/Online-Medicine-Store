@@ -49,9 +49,11 @@ public class OrderController {
                 order.setDeliveryAddress(request.getDeliveryAddress());
                 order.setProductIds(request.getProductIds());
                 order.setQuantity(request.getQuantity());
+                order.setEmailId(request.getEmailId());
                 productService.updateProductStock(request.getProductIds(), request.getQuantity());
-                orderService.saveOrder(order);
-                return ResponseEntity.ok(orderService.saveOrder(order));
+                Orders obj = orderService.saveOrder(order);
+                cartService.removeAllCartByUserId(userId);
+                return ResponseEntity.ok(obj);
             } else {
                 throw new Exception("Total amount is mismatch");
             }

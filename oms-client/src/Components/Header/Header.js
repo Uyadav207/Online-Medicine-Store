@@ -84,6 +84,7 @@ function Header() {
     setUserDetails(null);
     setShowLogout(false);
     setCart([]);
+    navigate("/");
   };
 
   return (

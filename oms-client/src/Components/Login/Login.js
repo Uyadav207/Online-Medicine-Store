@@ -78,6 +78,8 @@ function Login() {
       setUserDetails(response.user_profile_details);
       getCart();
       setLoginShow(false);
+    }else{
+      alert("Login failed");
     }
   };
 

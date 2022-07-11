@@ -2,13 +2,15 @@ import React, { useEffect, useState } from "react";
 import "./checkoutcardbill.css";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { useContext } from "react";
-import { Cart } from "../../../App";
+import { Cart, Order } from "../../../App";
 import { BASE_URL } from "../../../Config/BaseUrl";
+import { useNavigate } from "react-router-dom";
 
 function CheckoutcardBill() {
-  const [cart] = useContext(Cart);
+  const [cart,setCart] = useContext(Cart);
   const [total, setTotal] = useState(0);
-
+  const navigate = useNavigate();
+  const [order, setOrder] = useContext(Order);
   const handleCheckout = async () => {
     const productIds = cart.map((item) => item.id);
     const quantity = cart.map((item) => item.quantity);
@@ -27,16 +29,20 @@ function CheckoutcardBill() {
         paymentType: "COD",
         deliveryAddress: JSON.parse(localStorage.getItem("userDetails"))
           .address,
+        emailId: JSON.parse(localStorage.getItem("userDetails")).email,
       }),
     });
 
     if (response.status === 200) {
-        alert("Order Placed Successfully");
+      alert("Order Placed Successfully");
+      const data = await response.json();
+      setCart([]);
+      setOrder(data);
+      navigate("/orders");
+      // console.log(temp);
+    } else {
+      alert("Something went wrong");
     }
-    else{
-        alert("Something went wrong");
-    }
-
   };
 
   useEffect(() => {
@@ -69,7 +75,7 @@ function CheckoutcardBill() {
         <div className="place-order">
           <p>
             <small>₹ {Math.round(1.17 * total)}</small>
-            <small>
+            <small onClick={handleCheckout} style={{ cursor: "pointer" }}>
               Checkout{" "}
               <ArrowForwardIcon fontSize="small" style={{ marginLeft: "10" }} />
             </small>

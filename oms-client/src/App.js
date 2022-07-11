@@ -16,6 +16,7 @@ export const UserDetails = createContext(null);
 export const ProductHome = createContext([]);
 export const SearchBox = createContext(null);
 export const Cart = createContext([]);
+export const Order = createContext(null);
 
 function App() {
   const [loginShow, setLoginShow] = useState(false);
@@ -24,9 +25,11 @@ function App() {
   const [productHome, setProductHome] = useState([]);
   const [searchBox, setSearchBox] = useState(null);
   const [cart, setCart] = useState([]);
+  const [order, setOrder] = useState(null);
   return (
     <ShowLogin.Provider value={[loginShow, setLoginShow]}>
       <ShowSignup.Provider value={[showSignup, setShowSignup]}>
+        <Order.Provider value={[order, setOrder]}>
         <ProductHome.Provider value={[productHome, setProductHome]}>
           <SearchBox.Provider value={[searchBox, setSearchBox]}>
             <Cart.Provider value={[cart, setCart]}>
@@ -47,6 +50,7 @@ function App() {
             </Cart.Provider>  
           </SearchBox.Provider>
         </ProductHome.Provider>
+        </Order.Provider>
       </ShowSignup.Provider>
     </ShowLogin.Provider>
   );
