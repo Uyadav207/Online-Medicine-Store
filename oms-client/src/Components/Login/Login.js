@@ -47,7 +47,7 @@ function Login() {
         let product = productHome.filter(
           (medicine) => medicine.id === item.productId
         )[0];
-        product = { ...product, quantity: item.qty };
+        product = { ...product, quantity: item.quantity };
         temp = [...temp, product];
       });
     }
@@ -78,6 +78,8 @@ function Login() {
       setUserDetails(response.user_profile_details);
       getCart();
       setLoginShow(false);
+    }else{
+      alert("Login failed");
     }
   };
 
