@@ -62,11 +62,11 @@ function Header() {
         },
       }
     );
-    const data = await response.json();
     // console.log(data);
     var temp = [];
-    if (data.length > 0) {
-      console.log(data)
+    if (response.status===200) {
+      const data = await response.json();
+      // console.log(data)
       data.map((item) => {
         let product = productHome.filter(
           (medicine) => medicine.id === item.productId
@@ -74,8 +74,10 @@ function Header() {
         product = { ...product, quantity: item.quantity };
         temp = [...temp, product];
       });
+      console.log(temp);
+      localStorage.setItem("cart", JSON.stringify(temp));
+      setCart(localStorage.getItem("cart") ? JSON.parse(localStorage.getItem("cart")) : []);
     }
-    setCart(JSON.parse(localStorage.getItem("orderHome")));
     // console.log(temp);
   };
 
