@@ -16,7 +16,7 @@ function Home() {
   return (
     <div className="home">
       <Banner />
-      <div claclassNamess="container justify-content-md-center">
+      <div className="container justify-content-md-center">
         <div className="row">
           {productHome.map(medicine => 
               <GridWrapper
@@ -26,6 +26,7 @@ function Home() {
                 rating={medicine.productRating}
                 price={medicine.price}
                 id={medicine.id}
+                key={medicine.id}
               />
           )}
         </div>

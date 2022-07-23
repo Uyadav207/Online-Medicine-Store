@@ -76,9 +76,9 @@ function Header() {
       });
       console.log(temp);
       localStorage.setItem("cart", JSON.stringify(temp));
-      setCart(localStorage.getItem("cart") ? JSON.parse(localStorage.getItem("cart")) : []);
     }
-    // console.log(temp);
+    setCart(temp);
+    console.log(cart);
   };
 
 
@@ -98,9 +98,7 @@ function Header() {
       }
     );
     if (response.status === 200) {
-      // alert("Order Placed Successfully");
       const data = await response.json();
-      // console.log(data);
       var orderItems = {
         id: 0,
         emailId: "",
@@ -140,12 +138,10 @@ function Header() {
         };
         return;
       });
-      setCart([]);
+      temp.sort((a, b) => {
+        return new Date(b.createdAt) - new Date(a.createdAt);
+      })
       setOrderHome(temp);
-      // setDefaultOrder(temp[0]);
-      localStorage.setItem("orderHome", JSON.stringify(temp));
-      // navigate("/orders");
-      // console.log(temp);
     }
   }
 

@@ -79,8 +79,12 @@ function CheckoutcardBill() {
         return;
       });
       setCart([]);
+      temp.sort((a, b) => {
+        return new Date(b.createdAt) - new Date(a.createdAt);
+      })
       setOrderHome(temp);
       // setDefaultOrder(temp[0]);
+
       localStorage.setItem("orderHome", JSON.stringify(temp));
       navigate("/orders");
       // console.log(temp);

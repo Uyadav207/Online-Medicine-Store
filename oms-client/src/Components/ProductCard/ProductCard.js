@@ -86,13 +86,13 @@ function ProductCard({ image, name, description, rating, price, id }) {
             <small>{price}</small>
           </div>
           {showAdd ? (
-            <div href="#" class="btn noHover btn-sm" onClick={addToCart}>
+            <div href="#" className="btn noHover btn-sm" onClick={addToCart}>
               ADD
             </div>
           ) : (
             <div
               href="#"
-              class="noHover btn-sm"
+              className="noHover btn-sm"
               style={{ color: "green", cursor: "default", fontWeight: "600" }}
             >
               ADDED
