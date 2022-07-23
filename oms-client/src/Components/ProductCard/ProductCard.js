@@ -35,7 +35,7 @@ function ProductCard({ image, name, description, rating, price, id }) {
       productId: id,
       qty: 1,
     };
-    console.log(product);
+    // console.log(product);
 
     const response = await fetch(`${BASE_URL}/addtocart/addProduct`, {
       method: "POST",
